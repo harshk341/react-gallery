@@ -10,8 +10,8 @@ const Header = () => {
               React Gallery
             </a>
           </div>
-          <div className="app_search">
-            <input type="text" className="search_bar" />
+          <div className="app_search_bar">
+            <input type="text" className="search_bar" placeholder="Type And Hit Enter" />
           </div>
         </div>
       </div>
