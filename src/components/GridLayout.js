@@ -29,8 +29,6 @@ const GridLayout = ({ children }) => {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  console.log(window.innerWidth, numberOfColumns);
-
   return (
     <>
       <div
