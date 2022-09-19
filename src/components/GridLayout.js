@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { setColumn } from "src/utils/helpers";
+import { useSelector } from "src/store";
 
 const GridLayout = ({ children }) => {
+  const { windowSize } = useSelector(state => state.window);
   const [imageSet, setImageSet] = useState([]);
   const [numberOfColumns, setNumberOfColumns] = useState(
-    setColumn(window.innerWidth)
+    setColumn(windowSize)
   );
 
   useEffect(() => {
@@ -24,10 +26,8 @@ const GridLayout = ({ children }) => {
   }, [numberOfColumns, children]);
 
   useEffect(() => {
-    const resize = () => setNumberOfColumns(setColumn(window.innerWidth));
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
-  }, []);
+    setNumberOfColumns(setColumn(windowSize));
+  }, [windowSize]);
 
   return (
     <>
