@@ -2,6 +2,7 @@ import React, { memo, useEffect } from "react";
 import PropTypes from 'prop-types';
 import { GridLayout, ImageItem, Loader } from "src/components";
 import { photos as photosURL, limit } from "src/constants/api";
+import infiniteScrolling from "src/HOCs/infiniteScrolling";
 
 const Images = ({ photos, getPhotosList, isLoading, nextPage }) => {
   useEffect(() => {
@@ -52,4 +53,4 @@ Images.defaultProps = {
   photos: []
 }
 
-export default memo(Images);
+export default memo(infiniteScrolling(Images));

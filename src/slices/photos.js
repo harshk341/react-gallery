@@ -23,8 +23,9 @@ const slice = createSlice({
       state.isLoading = false;
     },
     getNextPage: (state) => {
-      const { photos } = state.photos;
-      state.nextPage = (photos?.length/limit)+1;
+      const { photos } = state;
+      const len = photos.length;
+      state.nextPage = (len/limit)+1;
     },
   },
 });
