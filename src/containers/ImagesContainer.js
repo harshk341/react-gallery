@@ -1,31 +1,11 @@
-import React from "react";
-import { GridLayout, ImageItem } from "src/components";
-import { RAW_DATA as images } from "src/rawData";
+import { Images } from "src/components";
+import { getPhotosList } from "src/slices/photos";
+import { connect } from "react-redux";
 
-const ImageContainer = () => {
+const mapStatetoProps = (state) => ({
+  photos: state.photos.photos,
+  isLoading: state.photos.isLoading,
+  nextPage: state.photos.nextPage,
+});
 
-  return (
-    <>
-      <div className="app_content">
-        <div className="app_content_wrapper">
-          <div className="inner_wrapper">
-            <GridLayout>
-              {images.map(({ id, urls, blur_hash, height, width }) => (
-                <ImageItem 
-                  key={id}
-                  url={urls?.regular}
-                  bHash={blur_hash}
-                  name={id}
-                  width={width}
-                  height={height}
-                />
-              ))}
-            </GridLayout>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default ImageContainer;
+export default connect(mapStatetoProps, { getPhotosList })(Images);

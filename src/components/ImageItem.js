@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BlurImage } from ".";
+import PropTypes from 'prop-types';
 
 const ImageItem = ({ name, url, bHash, width, height }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,5 +25,13 @@ const ImageItem = ({ name, url, bHash, width, height }) => {
     </>
   );
 };
+
+ImageItem.propTypes = {
+  name: PropTypes.string,
+  url: PropTypes.string,
+  bHash: PropTypes.string,
+  width: PropTypes.number, 
+  height: PropTypes.number
+}
 
 export default ImageItem;

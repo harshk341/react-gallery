@@ -9,7 +9,7 @@ export const instanceOfAxios = axios.create({
 
 instanceOfAxios.interceptors.request.use(
   (config) => {
-    let newUrl = `${config.url}&{${ACCESS_API_KEY}`;
+    let newUrl = `${config.url}&client_id=${ACCESS_API_KEY}`;
     if (!config.url.includes("?")) {
       newUrl = newUrl.replace("&", "?");
     }
@@ -36,7 +36,7 @@ instanceOfAxios.interceptors.response.use(
 
 export const apiCaller = async (
     endpoint,
-    method = 'gets',
+    method = 'get',
     body,
     params,
     signal
