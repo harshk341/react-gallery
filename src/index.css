@@ -32,3 +32,9 @@ img {
   vertical-align: middle;
   height: auto;
 }
+#nprogress .bar {
+  background: #505050;
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px #505050, 0 0 5px #505050;
+}

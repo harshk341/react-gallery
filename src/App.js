@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import "./App.css";
+import { useRoutes } from "react-router-dom";
 import { Header } from "./components";
 import { WINDOW_SIZE } from "./constants/windowSize";
-import { ImagesContainer } from "./containers";
 import { getWindowSize } from "./slices/window";
 import { useDispatch } from "./store";
+import router from "./router";
 
 const App = () => {
   const dispatch = useDispatch();
+  const content = useRoutes(router);
   
   useEffect(() => {
      
@@ -37,8 +39,7 @@ const App = () => {
   return (
     <div className="app">
       <div className="app_wrapper">
-        <Header />
-        <ImagesContainer />
+        {content}
       </div>
     </div>
   );
