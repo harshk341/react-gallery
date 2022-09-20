@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { photos as photosURL, limit } from "src/constants/api";
 
-const infiniteScrolling = (Component, debounce = 100) => {
+const infiniteScrolling = (Component, debounce = 0) => {
   const InnerComponent = (props) => {
     const { getPhotosList, nextPage } = props;
     useEffect(() => {
@@ -11,7 +11,7 @@ const infiniteScrolling = (Component, debounce = 100) => {
           document.body.offsetHeight - 100
         ) {
           setTimeout(
-            () => getPhotosList(photosURL, { per_page: limit, page: nextPage }),
+            () => getPhotosList(photosURL, { page: nextPage }),
             debounce
           );
         }

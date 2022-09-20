@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, ACCESS_API_KEY } from "src/constants/api";
+import { BASE_URL, ACCESS_API_KEY, limit } from "src/constants/api";
 const camelize = require("camelize");
 
 export const instanceOfAxios = axios.create({
@@ -9,7 +9,7 @@ export const instanceOfAxios = axios.create({
 
 instanceOfAxios.interceptors.request.use(
   (config) => {
-    let newUrl = `${config.url}&client_id=${ACCESS_API_KEY}`;
+    let newUrl = `${config.url}&client_id=${ACCESS_API_KEY}&per_page=${limit}`;
     if (!config.url.includes("?")) {
       newUrl = newUrl.replace("&", "?");
     }

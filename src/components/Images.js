@@ -10,7 +10,7 @@ const Images = ({ photos, getPhotosList, isLoading, nextPage }) => {
 
     getPhotosList(
       photosURL,
-      { per_page: limit, page: nextPage },
+      { page: nextPage },
       controller.signal
     );
 
