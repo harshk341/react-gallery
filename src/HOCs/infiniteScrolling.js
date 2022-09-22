@@ -8,7 +8,7 @@ const infiniteScrolling = (Component, debounce = 0) => {
       const handleScroll = () => {
         if (
           window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 100
+          document.body.offsetHeight - 50
         ) {
           setTimeout(
             () => getPhotosList(photosURL, { page: nextPage }),

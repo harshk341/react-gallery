@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { useRoutes } from "react-router-dom";
-import { Header } from "./components";
 import { WINDOW_SIZE } from "./constants/windowSize";
 import { getWindowSize } from "./slices/window";
 import { useDispatch } from "./store";
