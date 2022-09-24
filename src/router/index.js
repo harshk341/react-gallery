@@ -10,7 +10,7 @@ const Loader = (Component) => (props) =>
     </Suspense>
   );
 
-const Images = Loader(lazy(() => import("src/containers/ImagesContainer")));
+const HomePage = Loader(lazy(() => import("src/containers/HomeContainer")));
 
 const router = [
   {
@@ -19,7 +19,7 @@ const router = [
     children: [
       {
         path: "",
-        element: <Images />,
+        element: <HomePage />,
       },
     ],
   },

@@ -1,4 +1,4 @@
-import { Images } from "src/components";
+import { Home } from 'src/pages';
 import { getPhotosList } from "src/slices/photos";
 import { connect } from "react-redux";
 
@@ -8,4 +8,4 @@ const mapStatetoProps = (state) => ({
   nextPage: state.photos.nextPage,
 });
 
-export default connect(mapStatetoProps, { getPhotosList })(Images);
+export default connect(mapStatetoProps, { getPhotosList })(Home);
