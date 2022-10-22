@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BlurImage } from ".";
 import PropTypes from "prop-types";
 
-const ImageItem = ({ name, url, bHash, width, height }) => {
+const ImageItem = ({ name, url, bHash, width, height, usedForCollection }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleLoad = (_e) => {
@@ -11,7 +11,9 @@ const ImageItem = ({ name, url, bHash, width, height }) => {
 
   return (
     <>
-      <div className="image_container">
+      <div
+        className={`image_container${usedForCollection ? " preview-img" : ""}`}
+      >
         <BlurImage hash={bHash} classname="blur_wrapper" show={isLoading} />
         <img
           src={url}
@@ -32,6 +34,7 @@ ImageItem.propTypes = {
   bHash: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
+  usedForCollection: PropTypes.bool,
 };
 
 export default ImageItem;

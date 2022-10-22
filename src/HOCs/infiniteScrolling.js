@@ -3,7 +3,7 @@ import { photos as photosURL, limit } from "src/constants/api";
 
 const infiniteScrolling = (Component, debounce = 0) => {
   const InnerComponent = (props) => {
-    const { getPhotosList, nextPage } = props;
+    const { fetchNextPhotosList, nextPage } = props;
     useEffect(() => {
       const handleScroll = () => {
         if (
@@ -11,7 +11,7 @@ const infiniteScrolling = (Component, debounce = 0) => {
           document.body.offsetHeight - 50
         ) {
           setTimeout(
-            () => getPhotosList(photosURL, { page: nextPage }),
+            () => fetchNextPhotosList(photosURL, { page: nextPage }),
             debounce
           );
         }
@@ -22,7 +22,7 @@ const infiniteScrolling = (Component, debounce = 0) => {
       return () => {
         window.removeEventListener("scroll", handleScroll);
       };
-    }, [getPhotosList, nextPage]);
+    }, [fetchNextPhotosList, nextPage]);
     return <Component {...props} />;
   };
   return InnerComponent;

@@ -10,6 +10,7 @@ const Groups = ({ groups }) => {
           <GroupCard
             key={id}
             classname={`collection_card_${id}`}
+            collectionId={id}
             name={title}
             totalImages={total_photos}
             mainImage={preview_photos}

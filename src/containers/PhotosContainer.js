@@ -1,5 +1,8 @@
 import { Photos } from "src/pages";
-import { fetchPhotosListOnFirstStart } from "src/slices/photos";
+import {
+  fetchPhotosListOnFirstStart,
+  fetchNextPhotosList,
+} from "src/slices/photos";
 import { connect } from "react-redux";
 
 const mapStatetoProps = (state) => ({
@@ -8,6 +11,7 @@ const mapStatetoProps = (state) => ({
   nextPage: state.photos.nextPage,
 });
 
-export default connect(mapStatetoProps, { fetchPhotosListOnFirstStart })(
-  Photos
-);
+export default connect(mapStatetoProps, {
+  fetchPhotosListOnFirstStart,
+  fetchNextPhotosList,
+})(Photos);

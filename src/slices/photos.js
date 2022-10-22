@@ -59,4 +59,15 @@ export const fetchPhotosListOnFirstStart =
     }
   };
 
+export const fetchNextPhotosList =
+  (nextUrl, params, signal) => async (dispatch, getState) => {
+    const state = getState();
+    const { isLoading } = state.photos;
+    const isFetching = isLoading;
+    const shouldFetch = Boolean(!isFetching && nextUrl);
+    if (shouldFetch) {
+      dispatch(getPhotosList(nextUrl, params, signal));
+    }
+  };
+
 export default slice;
