@@ -10,7 +10,8 @@ const Loader = (Component) => (props) =>
     </Suspense>
   );
 
-const HomePage = Loader(lazy(() => import("src/containers/HomeContainer")));
+const Photos = Loader(lazy(() => import("src/containers/PhotosContainer")));
+const Collectios = Loader(lazy(() => import("src/pages/Collections")));
 
 const router = [
   {
@@ -19,7 +20,15 @@ const router = [
     children: [
       {
         path: "",
-        element: <HomePage />,
+        element: <Navigate to="photos" replace />,
+      },
+      {
+        path: "photos",
+        element: <Photos />,
+      },
+      {
+        path: "collections",
+        element: <Collectios />,
       },
     ],
   },

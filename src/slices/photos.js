@@ -25,7 +25,7 @@ const slice = createSlice({
     getNextPage: (state) => {
       const { photos } = state;
       const len = photos.length;
-      state.nextPage = (len/limit)+1;
+      state.nextPage = len / limit + 1;
     },
   },
 });
@@ -36,16 +36,26 @@ export const requestingPhotos = () => (dispatch) => {
   dispatch(slice.actions.requestingPhotos());
 };
 
-export const getPhotosList =
-  (url, params, signal) => async (dispatch) => {
-    try {
-      dispatch(requestingPhotos());
-      const _photos = await apiCaller(url, "get", null, params, signal);
-      dispatch(slice.actions.getPhotosList({ photos: _photos }));
-      dispatch(slice.actions.gotPhotos());
-      dispatch(slice.actions.getNextPage())
-    } catch (error) {
-      console.log(error);
+export const getPhotosList = (url, params, signal) => async (dispatch) => {
+  try {
+    dispatch(requestingPhotos());
+    const _photos = await apiCaller(url, "get", null, params, signal);
+    dispatch(slice.actions.getPhotosList({ photos: _photos }));
+    dispatch(slice.actions.gotPhotos());
+    dispatch(slice.actions.getNextPage());
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchPhotosListOnFirstStart =
+  (url, params, signal) => async (dispatch, getState) => {
+    const state = getState();
+    const { photos } = state.photos;
+    const hasPhotos = photos.length > 0;
+    const shouldFetch = Boolean(!hasPhotos && url);
+    if (shouldFetch) {
+      dispatch(getPhotosList(url, params, signal));
     }
   };
 

@@ -4,14 +4,23 @@ import { Images } from "src/components";
 import { photos as photosURL } from "src/constants/api";
 import infiniteScrolling from "src/HOCs/infiniteScrolling";
 
-const Home = ({ photos, getPhotosList, isLoading, nextPage }) => {
+const Photos = ({
+  photos,
+  fetchPhotosListOnFirstStart,
+  isLoading,
+  nextPage,
+}) => {
   useEffect(() => {
     const controller = new AbortController();
 
-    getPhotosList(photosURL, { page: nextPage }, controller.signal);
+    fetchPhotosListOnFirstStart(
+      photosURL,
+      { page: nextPage },
+      controller.signal
+    );
 
     return () => controller.abort();
-  }, [getPhotosList]);
+  }, [fetchPhotosListOnFirstStart]);
 
   return (
     <>
@@ -22,15 +31,15 @@ const Home = ({ photos, getPhotosList, isLoading, nextPage }) => {
   );
 };
 
-Home.propTypes = {
+Photos.propTypes = {
   photos: PropTypes.array,
   getPhotosList: PropTypes.func,
   isLoading: PropTypes.bool,
   nextPage: PropTypes.number,
 };
 
-Home.defaultProps = {
+Photos.defaultProps = {
   photos: [],
 };
 
-export default memo(infiniteScrolling(Home));
+export default memo(infiniteScrolling(Photos));

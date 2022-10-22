@@ -8,13 +8,23 @@ const NavBar = () => {
         <div className="navbar_wrapper">
           <ul className="nav">
             <li className="nav_item">
-              <NavLink to="s/photos" className="nav_link">
+              <NavLink
+                to="photos"
+                className={({ isActive }) =>
+                  `nav_link ${isActive ? "active" : ""}`
+                }
+              >
                 Photos
               </NavLink>
             </li>
             <li className="nav_item">
-              <NavLink to="s/collections" className="nav_link">
-                Collection
+              <NavLink
+                to="collections"
+                className={({ isActive }) =>
+                  `nav_link ${isActive ? "active" : ""}`
+                }
+              >
+                Collections
               </NavLink>
             </li>
           </ul>

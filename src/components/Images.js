@@ -6,9 +6,9 @@ const Images = ({ photos, isLoading }) => {
   return (
     <>
       <GridLayout>
-        {photos.map(({ id, urls, blurHash, height, width }, indx) => (
+        {photos.map(({ id, urls, blurHash, height, width }) => (
           <ImageItem
-            key={indx}
+            key={id}
             url={urls?.regular}
             bHash={blurHash}
             name={id}

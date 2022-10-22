@@ -6,3 +6,5 @@ export { default as Images } from "./Images";
 export { default as Loader } from "./Loader";
 export { default as BaseLayout } from "./BaseLayout";
 export { default as NavBar } from "./NavBar";
+export { default as Groups } from "./Groups";
+export { default as GroupCard } from "./GroupCard";
